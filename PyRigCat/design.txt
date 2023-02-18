@@ -1,0 +1,54 @@
+PyRigCat is a base class that all transceiver-specific classes shoud subclass.
+
+Subclasses use these base class methods for serial port reads and writes:
+    _serial_read()
+    _serial_write()
+ 
+Applications use these base class methods for serial port configuration
+    config_port()
+    close()
+
+Subclasses override the ascii_cmd() method as the primary control method used
+by application code.
+ascii_cmd() accepts an ascii command (as a string) and an optional list of 
+arguments, and returns an ascii response (also as a string).  The response 
+should be one of the following:
+   1. The parameter being requested, such as the transceiver frequency or mode.
+   2. PyRigCat.OK if the command returns no response but was successful
+   3. PyRigCat.ERROR if the command was unsuccessful
+
+For example, ascii_cmd('FREQ', []) requests the frequency and should return
+something like '14074000'.  ascii_cmd('FREQ', ['7074000']) sets the frequency
+and should return either PyRigCat.OK or PyRigCat.ERROR.
+
+The PyRigCat base class has two methods for sending unparsed commands directly to
+the transceiver:
+1. The raw_ascii_str() method sends an ASCII string as-is and returns a response
+2. The raw_hex_list() converts a list of ASCII hex values to binary bytes, sends the bytes 
+   to the transceiver, and returns a response.
+
+Note that PyRigCat.OK has the string value 'OK', and PyRigCat.ERROR has the
+string value 'ERROR'.
+
+See the ascii-cmds.txt file for a list of commands and their syntax.
+
+Special cases of ascii commands
+    1. 'PTT' gets/sets the push-to-talk (PTT) state.  Subclasses should do the following:
+        A. Add code to their ascii_cmd() method to call the base class ptt_cmd() method.
+        See the PyRigCat source code for details.
+        B. Provide a ptt_cat() method to provide transceiver-specific PTT control.  See
+        the PyRigCat.py source code for details.
+    2. 'PTT-METHOD' gets/sets the PTT method (CAT, DTR, RTS, NONE)  Subclasses should
+        add code to their ascii_cmd() method to call the base class ptt_method_cmd()
+        method. See the PyRigCat source code for details.
+    
+
+The PyRigCat module contains classes of defined constants for consistent use.
+1. Datasize() provides constants for setting serial port data bit sizes (5, 6, 7, 8)
+2. Parity() provides constants for setting serial port parity (NONE, EVEN, ODD, MARK, SPACE).
+3. Stopbits() provides constants for setting serial port stop bit sizes (ONE, ONE_POINT_FIVE, TWO)
+4. Flow() provides constants for setting serial port flow control (NONE, XONXOFF, etc.)
+5. PttMethod() provides constants for getting/setting the PTT method (e.g., CAT, DTR, RTS)
+6. OperatingMode() provides constants for getting/setting the transceiver operating
+   mode (e.g., LSB, USB, CW, DIGI, etc.)
+

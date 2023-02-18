@@ -1,0 +1,127 @@
+
+********** COMMON COMMANDS **********
+(May not be supported on all transceivers.)
+
+FREQ  [VFO frequency Hz]
+FREQA [VFO frequency Hz]
+FREQB [VFO frequency Hz]
+    Get/set the VFO frequency.
+    FREQ  - Get/set the currently active VFO frequency, or the VFO-A frequency.
+            Behavior depends on the transceiver.
+    FREQA - Get/set VFO-A frequency.
+    FREQB - Get/set VFO-B frequency.
+
+MODE  [operating mode]
+MODEA [operating mode]
+MODEB [operating mode]
+    Get/set the operating mode.
+    See the OperatingMode class for the list of operating modes.
+    Not all modes are supported by all transceivers.
+    MODE -  Get/set the mode associated with the active VFO, or VFO-A.
+            Behavior depends on the transceiver.
+    MODEA - Get/set the mode associated with VFO-A.
+    MODEB - Get/set the mode associated with VFO-B.
+
+PTT [OFF | ON]
+    Get/set the push-to-talk (PTT) status.
+    
+PTT-METHOD [NONE | CAT | DTR | RTS]
+    Get/set the push-to-talk (PTT) method.
+
+SPLIT [OFF | ON]
+    Get/set the split operation status.
+
+
+********** REPEATER COMMANDS **********
+(May not be supported on all transceivers.)
+
+RPT-OFFSET <Offset frequency Hz>
+    Set the repeater offset frequency in Hz.
+    (e.g., -600000 = -6KHz offset)
+    Zero sets simplex mode.
+    Note that some transceivers may only require this command when setting a
+    non-standard offset. Many transceivers have automatic repeater shift (ARS)
+    enabled by default.
+
+TONE <OFF | ENC | DEC> [tone frequency in Hz*10]
+    Set the repeater tone encoder/decoder mode and frequency.
+    OFF = Tone encode/decode off: no tone on transmit or receive
+    ENC = Tone encode on: use tone on transmit
+    DEC = Tone decode on: use tone on transmit and receive (also known as tone squelch)
+    
+    CTCSS encode/decode tone frequency is specified in Hz * 10.
+    (e.g., 1318 = 131.8 Hz)
+
+
+********** OTHER COMMANDS **********
+(May not be supported on all transceivers.)
+
+DATE [YYYYMMDD]
+    Get/set the transceiver date.
+
+LOCK [OFF | ON]
+    Get/set the frequency dial lock setting.
+    
+MONITOR [OFF | ON] [level]
+    Get/set the transceiver sidetone/monitor status.
+    Turns the sidetone/montor off or on, and sets the monitor level.
+    The level should be interpreted as a percentage of full-scale volume (0 - 100).
+
+NB [OFF | ON]
+    Get/set the noise blanker state.
+
+NR [OFF | ON]
+    Get/set the noise reduction filter state.
+    
+POWER [level]
+    Get/set the RF power level.
+    The level should be interpreted as a percentage of full-scale power (0 - 100).
+
+PREAMP [OFF | ON]
+    Get/set the preamplifier state.
+
+RIT <OFF | ON>
+    Turn receiver incremental tuning (RIT) off/on.
+    This is also known as a clarifier (e.g., Yaesu radios).
+    
+RIT-FREQ <RIT frequency Hz>
+    Set the RIT (clarifier) offset frequency in Hz.
+
+SPEECH [OFF | ON] [level]
+    Get/set the speech processor level.
+    May also be called the speech compressor on some transceivers.
+    The level should be interpreted as a percentage of full-scale (0 - 100).
+
+SWAPVFO
+    Swap VFO-A <--> VFO-B
+
+TIME [HHMMSS]
+    Get/set transceiver time.
+
+VFOMEM [VFO | MEM]
+    Get/set the VFO/Memory mode.
+
+
+********** FT-817 **********
+
+RX-STATUS
+    Return the FT-817 Rx status byte.
+
+TX-STATUS
+    Return the FT-817 Tx status byte.
+
+
+********** FT-991 **********
+
+IF-NARROW [OFF | ON]
+    Get/set the narrow/wide IF setting.
+    See transceiver documentation for details.
+
+IF-SHIFT [shift-val]
+    Get/set the IF shift value.
+    See transceiver documentation for details.
+
+IF-WIDTH [width-val]
+    Get/set the IF width value.
+    See transceiver documentation for details.
+    
