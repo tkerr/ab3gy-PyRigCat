@@ -139,6 +139,19 @@ class RigName(object):
     FT817  = 'FT-817'
     FT991  = 'FT-991'
     IC7000 = 'IC-7000'
+    RIG_LIST = [
+        NONE,
+        FT817,
+        FT991,
+        IC7000]
+        
+    # ------------------------------------------------------------------------
+    def is_valid(name):
+        """
+        Return True if the specified rig is a valid RigName attribute,
+        or False otherwise.
+        """
+        return (name.upper() in RigName.RIG_LIST)
 
 
 ##############################################################################

@@ -585,8 +585,8 @@ class PyRigCat_icom(PyRigCat):
         """
         mode = OperatingMode.UNKNOWN
         (ok, data) = self.xcvr_cmd(cmd=0x04, max_data=2)
-        mode_val = data[0]
         if ok:
+            mode_val = data[0]
             if (mode_val == 0): mode = OperatingMode.LSB
             elif (mode_val == 1): mode = OperatingMode.USB
             elif (mode_val == 2): mode = OperatingMode.AM
