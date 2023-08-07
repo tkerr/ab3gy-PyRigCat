@@ -45,7 +45,7 @@
 
 # Local packages.
 from PyRigCat.PyRigCat import PyRigCat, Datasize, Parity, Stopbits, Flow, \
-    PttMethod, OperatingMode
+    PttMethod, OperatingMode, RigName
 
 ##############################################################################
 # PyRigCat_ft817 class.
@@ -61,8 +61,8 @@ class PyRigCat_ft817(PyRigCat):
         """
         Class constructor.
         """
-        super().__init__()   # Call the base class constructor
-        self.NAME = 'FT-817' # Set transceiver name
+        super().__init__()        # Call the base class constructor
+        self.NAME = RigName.FT817 # Set transceiver name
     
     # ------------------------------------------------------------------------
     def __del__(self):

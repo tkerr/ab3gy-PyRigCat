@@ -45,7 +45,7 @@
 
 # Local packages.
 from PyRigCat.PyRigCat import PyRigCat, Datasize, Parity, Stopbits, Flow, \
-    PttMethod, OperatingMode
+    PttMethod, OperatingMode, RigName
 
 ##############################################################################
 # Globals.
@@ -80,7 +80,7 @@ class PyRigCat_ft991(PyRigCat):
         Class constructor.
         """
         super().__init__()   # Call the base class constructor
-        self.NAME = 'FT-991'
+        self.NAME = RigName.FT991
         self._has_data_modes = True
         self.set_ptt_method(PttMethod.CAT)
     

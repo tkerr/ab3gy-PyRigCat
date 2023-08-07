@@ -45,7 +45,7 @@
 
 # Local packages.
 from PyRigCat.PyRigCat import PyRigCat, Datasize, Parity, Stopbits, Flow, \
-    PttMethod, OperatingMode
+    PttMethod, OperatingMode, RigName
 from PyRigCat.PyRigCat_icom import PyRigCat_icom, IcomAddr
 
 ##############################################################################
@@ -63,7 +63,7 @@ class PyRigCat_ic7000(PyRigCat_icom):
         Class constructor.
         """
         super().__init__()           # Call the base class constructor
-        self.NAME = 'IC-7000'        # Set transceiver name
+        self.NAME = RigName.IC7000   # Set transceiver name
         self._echo = True            # Commands are echoed
         self._has_data_modes = False # No separate data modes
         self.addr = IcomAddr.IC7000  # IC-7000 hex address

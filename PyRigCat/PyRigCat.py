@@ -133,6 +133,13 @@ class OperatingMode(object):
         """
         return (mode.upper() in OperatingMode.MODE_LIST)
 
+# ----------------------------------------------------------------------------
+class RigName(object):
+    NONE   = 'NONE'
+    FT817  = 'FT-817'
+    FT991  = 'FT-991'
+    IC7000 = 'IC-7000'
+
 
 ##############################################################################
 # Functions.
